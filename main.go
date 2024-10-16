@@ -6,16 +6,24 @@ import (
 	"log"
 	"net"
 
-	pb "github.com/spodolaks/qbility-backend/generated" // Correct import path for Protobuf-generated Go files
-	"github.com/spodolaks/qbility-backend/server"       // Correct import path to the server package
+	"github.com/joho/godotenv"
+	pb "github.com/spodolaks/qbility-backend/generated/proto" // Correct import path for Protobuf-generated Go files
+	"github.com/spodolaks/qbility-backend/server"             // Correct import path to the server package
 
 	_ "github.com/go-sql-driver/mysql" // MySQL driver for Go
 	"google.golang.org/grpc"
 )
 
+func init() {
+	err := godotenv.Load()
+	if err != nil {
+		log.Fatalf("Error loading .env file")
+	}
+}
+
 func main() {
 	// Connect to the MySQL database
-	db, err := sql.Open("mysql", "user:password@tcp(127.0.0.1:3306)/dbname")
+	db, err := sql.Open("mysql", "qbility:password@tcp(65.21.148.241:3306)/qbility")
 	if err != nil {
 		log.Fatalf("Failed to connect to database: %v", err)
 	}
