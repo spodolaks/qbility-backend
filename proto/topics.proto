@@ -1,0 +1,30 @@
+syntax = "proto3";
+
+package topic;
+
+option go_package = "github.com/spodolaks/qbility-backend/generated/proto;proto";
+
+service TopicService {
+    rpc GetTopics (Empty) returns (TopicList) {}
+    rpc GetTopicContent (TopicRequest) returns (TopicContent) {}
+}
+
+message Empty {}
+
+message Topic {
+    int32 id = 1;
+    string title = 2;
+}
+
+message TopicList {
+    repeated Topic topics = 1;
+}
+
+message TopicRequest {
+    int32 topic_id = 1;
+}
+
+message TopicContent {
+    int32 topic_id = 1;
+    string html_content = 2;
+}
