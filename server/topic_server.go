@@ -5,7 +5,7 @@ import (
 	"database/sql"
 	"log"
 
-	pb "path/to/generated" // Path to generated Protobuf Go files
+	pb "github.com/spodolaks/qbility-backend/generated" // Path to generated Protobuf Go files
 )
 
 // TopicServer implements the gRPC server defined in the proto file.
